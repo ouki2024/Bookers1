@@ -8,13 +8,6 @@
     </span>
 
     <p>画像</p>
-    <% if list.image.attached? %>
-        <%= image_tag list.image, size: "200️x200" %>
-    
-    <% else %>
-        <%= image_tag '4-6', size: "200x200" %>
-    
-    <% end %>
-    
+ <%= image_tag list.image, size: "200x200" %>
     
 <% end %>

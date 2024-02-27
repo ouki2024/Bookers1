@@ -7,13 +7,13 @@ class ListsController < ApplicationController
 
   def create
     
-    list = List.new(list_params)
-    list.save
-   
+    @list = List.new(list_params)
     
-    #redirect_to '/top'を削除して、以下コードに変更
-    #詳細画面へリダイレクト
-    redirect_to list_path(list.id)
+    if @list.save
+     redirect_to list_path(@list.id)
+    else 
+      render :new
+    end
     
   end
 
@@ -38,7 +38,8 @@ class ListsController < ApplicationController
   end
   
   def destroy
-    list = List.find(params[:id])　　#データ（レコード）を取得
+    list = List.find(params[:id])
+    　#データ（レコード）を取得
     list.destroy　　#データ（レコード）を削除
     redirect_to '/lists' #投稿一覧画面へリダイレクト
   end
